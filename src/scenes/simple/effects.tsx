@@ -28,6 +28,7 @@ const NoiseEffectComponent = () => {
 
     setOpacity(totalMovement);
   });
+
   return (
     <Noise
       opacity={MathUtils.smoothstep(opacity * 200, 0, 1)}
@@ -143,7 +144,7 @@ export const Effects = () => {
   return (
     <EffectComposer>
       {getChromaticAberration()}
-      <NoiseEffectComponent />
+      {/* <NoiseEffectComponent /> */}
     </EffectComposer>
   );
 };

@@ -12,6 +12,7 @@
     "@theatre/core": "0.5",
     "@theatre/r3f": "0.5",
     "@theatre/studio": "0.5",
+    "@tweenjs/tween.js": "^20.0.3",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",

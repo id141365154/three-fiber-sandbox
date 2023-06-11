@@ -13,6 +13,7 @@ import texture from "./floor-texture.webp";
 import { TextureLoader } from "three";
 import { Effects } from "./effects";
 import { Rig } from "./components/rig";
+import { Card } from "./components/card";
 
 extend({ UnrealBloomPass, EffectComposer });
 
@@ -51,6 +52,8 @@ export const SimpleScene = () => {
           <boxGeometry args={[1, 1, 1]} />
           <meshPhysicalMaterial map={textureMap} />
         </mesh>
+
+        <Card />
         <Effects />
 
         <mesh receiveShadow rotation-x={-Math.PI / 2} position={[0, -0.92, 0]}>
