@@ -1,10 +1,10 @@
-import './App.css';
-import { SimpleScene } from './scenes/simple';
+import "./App.css";
+import { Cards } from "./scenes/cards";
 
 function App() {
   return (
-    <div  >
-      <SimpleScene/>
+    <div>
+      <Cards />
     </div>
   );
 }
