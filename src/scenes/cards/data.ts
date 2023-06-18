@@ -4,6 +4,7 @@ import large from "./images/large.svg";
 import png from "./images/png.png";
 import award from "./images/awards.svg";
 
+
 export type CardData = {
   title: string;
   description: string;

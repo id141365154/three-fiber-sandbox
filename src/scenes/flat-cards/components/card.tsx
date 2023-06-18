@@ -16,7 +16,7 @@ export const Card = ({ totalCards, image, position }: Props) => {
 
   return (
     <mesh ref={meshRef} name="cube2" rotation={[0, 0, 0]} position={position}>
-      <Image url={image} position={[0, 0, 0.01]} scale={[3, 3.5]} />
+      <Image url={image} position={[0, 0, 0.01]} scale={[3, 3.2]} />
       {/* <boxGeometry args={[2, 3.5, 0.01]} /> */}
       {/* <meshPhysicalMaterial map={textureMap} /> */}
     </mesh>

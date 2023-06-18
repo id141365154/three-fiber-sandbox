@@ -58,7 +58,7 @@ export const CardsList = () => {
         return (
           <Card
             key={card.title}
-            position={new Vector3(x, y, getRandomArbitrary(0, 4))}
+            position={new Vector3(x, y, getRandomArbitrary(2, 5))}
             totalCards={totalCards}
             image={card.image}
           />

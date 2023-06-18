@@ -1,5 +1,7 @@
-import domrf from "./images/domrf.svg";
-import otkritie from "./images/otkritie.svg";
+ 
+ 
+import otkritie from "./images/otkritie.png";
+import domrf from "./images/domrf.png";
 
 
 export type CardData = {
@@ -20,13 +22,13 @@ export const cardsData: CardData[] = [
     title: "2",
     description: "description  1",
     position: [0, 0],
-    image: domrf,
+    image: otkritie,
   },
   {
     title: "3",
     description: "description  2",
     position: [2, 0],
-    image: domrf,
+    image: otkritie,
   },
   {
     title: "4",
@@ -38,7 +40,7 @@ export const cardsData: CardData[] = [
     title: "5",
     description: "description  3",
     position: [0, -2],
-    image: domrf,
+    image: otkritie,
   },
   {
     title: "card 4",
@@ -50,7 +52,7 @@ export const cardsData: CardData[] = [
     title: "card 5",
     description: "description  5",
     position: [0, 2],
-    image: domrf,
+    image: otkritie,
   },
   {
     title: "card 6",
@@ -104,19 +106,19 @@ export const cardsData: CardData[] = [
     title: "card 14",
     description: "description 10",
     position: [-2, -4],
-    image: domrf,
+    image: otkritie,
   },
   {
     title: "card 15",
     description: "description 10",
     position: [-4, -2],
-    image: domrf,
+    image: otkritie,
   },
   {
     title: "card 16",
     description: "description 10",
     position: [-4, 0],
-    image: domrf,
+    image: otkritie,
   },
   {
     title: "card 17",
