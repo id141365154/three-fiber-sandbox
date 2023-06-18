@@ -1,10 +1,10 @@
 import "./App.css";
-import { Cards } from "./scenes/cards";
+import { FlatCards } from "./scenes/flat-cards";
 
 function App() {
   return (
     <div>
-      <Cards />
+      <FlatCards />
     </div>
   );
 }
