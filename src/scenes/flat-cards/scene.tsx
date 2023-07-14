@@ -3,7 +3,7 @@ import { UnrealBloomPass, EffectComposer } from "three-stdlib";
 import { CameraShake, OrbitControls } from "@react-three/drei";
 
 import "./styles.css";
-import { Environment, PerspectiveCamera } from "@react-three/drei";
+import { PerspectiveCamera } from "@react-three/drei";
 import { cardsData } from "./data";
 
 import { CardsList } from "./card-list";
@@ -17,8 +17,8 @@ const gap = 10;
 
 const maxDistance = totalCards * gap;
 
-var minPan = new Vector3(-10, -7, 0);
-var maxPan = new Vector3(10, 7, 0);
+var minPan = new Vector3(-6, -1, 0);
+var maxPan = new Vector3(8, 5, 0);
 var _v = new Vector3();
 
 export const Scene = () => {
@@ -57,8 +57,8 @@ export const Scene = () => {
         maxPolarAngle={Math.PI / 2}
         maxAzimuthAngle={2 * Math.PI}
         minAzimuthAngle={2 * Math.PI}
-        minDistance={6}
-        maxDistance={10}
+        minDistance={10}
+        maxDistance={16}
         mouseButtons={{
           LEFT: MOUSE?.PAN,
         }}
@@ -79,7 +79,7 @@ export const Scene = () => {
 
       <color attach="background" args={["#000000"]} />
 
-      <Environment preset="city" />
+       
     </>
   );
 };
