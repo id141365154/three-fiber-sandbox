@@ -1,8 +1,6 @@
-import { useLoader } from "@react-three/fiber";
-import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { useRef, useState } from "react";
 import { Mesh, Vector3 } from "three";
-import { TextureLoader } from "three";
-import texture from "../floor-texture.webp";
 import { Image } from "@react-three/drei";
 
 type Props = {
@@ -11,14 +9,25 @@ type Props = {
   image: string;
 };
 export const Card = ({ totalCards, image, position }: Props) => {
-  const textureMap = useLoader(TextureLoader, texture);
+   
   const meshRef = useRef<Mesh>(null);
 
+  const [hovered, setHover] = useState(false);
+
+  const over = () => setHover(true);
+  const out = () => setHover(false);
+
+  useFrame(() => {
+    const zPos = hovered ?  position.z+.5 :  position.z;
+    if (meshRef.current) {
+      meshRef.current?.position.lerp(new Vector3(position.x, position.y, zPos), 0.4);       
+    }
+  });
+ 
+
   return (
-    <mesh ref={meshRef} name="cube2" rotation={[0, 0, 0]} position={position}>
+    <mesh ref={meshRef} name="cube2" rotation={[0, 0, 0]} position={position} onPointerEnter={over} onPointerLeave={out}  >
       <Image url={image} position={[0, 0, 0.01]} scale={[3, 3.2]} />
-      {/* <boxGeometry args={[2, 3.5, 0.01]} /> */}
-      {/* <meshPhysicalMaterial map={textureMap} /> */}
     </mesh>
   );
 };
