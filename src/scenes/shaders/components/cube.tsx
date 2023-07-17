@@ -28,11 +28,17 @@ void main() {
      
      
 
-   vec3 result = vec3(
-      position.x,
-      cos(position.x+time*3.0) * sin(position.z+time*3.0)*0.04,
-      position.z
-    );
+  //  vec3 result = vec3(
+  //     position.x,
+  //     cos(position.x+time*3.0) * sin(position.z+time*3.0)*0.04,
+  //     position.z
+  //   );
+// Reference: https://www.youtube.com/watch?v=wRmeFtRkF-8
+  vec3 result = vec3(
+    position.x,
+    sin(pow(position.x, 2.0)+pow(position.z, 2.0)+time)*0.2,
+    position.z
+  );
     
 
     csm_Position =  result;
@@ -72,7 +78,7 @@ export const Cube = () => {
   });
   return (
     <mesh name="cube2" rotation={[0, 0, 0]} position={[0, 0.2, 0]} castShadow>
-      <boxGeometry args={[10, 0.2, 9, 40, 2, 40]} />
+      <boxGeometry args={[10, 0.2, 9, 100, 2, 100]} />
       <meshPhysicalMaterial map={textureMap} wireframe />
 
       <CustomShaderMaterial
