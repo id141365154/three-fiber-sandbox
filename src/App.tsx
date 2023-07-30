@@ -1,10 +1,10 @@
 import "./App.css";
-import { ShadersScene } from './scenes/shaders';
+import { ParticlesScene } from "./scenes/particles";
 
 function App() {
   return (
     <div>
-      <ShadersScene />
+      <ParticlesScene />
     </div>
   );
 }

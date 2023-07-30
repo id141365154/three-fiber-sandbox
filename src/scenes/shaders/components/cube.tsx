@@ -24,15 +24,7 @@ void main() {
     vertexNormal = normalize(normalMatrix * normal);
     
     float angleRadians = (time ) * PI / 180.0;
-     
-     
-     
 
-  //  vec3 result = vec3(
-  //     position.x,
-  //     cos(position.x+time*3.0) * sin(position.z+time*3.0)*0.04,
-  //     position.z
-  //   );
 // Reference: https://www.youtube.com/watch?v=wRmeFtRkF-8
   vec3 result = vec3(
     position.x,
@@ -55,7 +47,7 @@ uniform float time;
         float intentsity = 1.05 - dot(vertexNormal, vec3(0.0, 0.0, 1.0)); 
         vec3 atmosphere = vec3(2.7, 0.7, 0.7) * pow(intentsity, 1.5);
         
-        csm_DiffuseColor =    vec4(vertexUV, sin(time*0.5), 1.0);
+        csm_DiffuseColor = vec4(vertexUV, sin(time*0.5), 1.0);
          
     }
 `;

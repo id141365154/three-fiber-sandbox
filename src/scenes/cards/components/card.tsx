@@ -32,7 +32,7 @@ export const Card = ({ totalCards, image, position }: Props) => {
       position={new Vector3(0, 0, 0)}
     >
       <Image url={image} position={new Vector3(0, 0, 0.1)} scale={[3, 3]} />
-      <boxGeometry args={[1.5, 1.9, 0.1]} />
+      <boxGeometry args={[1.5, 1.9, 0.1, 10, 10, 10]} />
       <meshPhysicalMaterial map={textureMap} />
     </mesh>
   );
