@@ -10,14 +10,6 @@ varying vec2 vertexUV;
 varying vec3 vertexNormal; 
 uniform float time;
 
-
- 
-
-  
-
- 
-
-
 void main() {
    
     vertexUV = uv;
