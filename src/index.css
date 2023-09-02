@@ -12,3 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.header {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 200px;
+  z-index: 99;
+}

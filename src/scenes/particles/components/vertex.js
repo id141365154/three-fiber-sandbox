@@ -1,6 +1,10 @@
-import { glsl } from "../lib";
+import glsl from 'glslify';
 
 export const vertex = glsl`
+
+ 
+#pragma glslify: ease = require(glsl-easings/exponential-in);
+
 varying vec2 vUv; 
 varying vec3 vertexNormal; 
 uniform float time;
@@ -230,14 +234,12 @@ void main() {
   
   vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
 
-  gl_PointSize = 2.0;
+  gl_PointSize = 5.0;
    
   vec4 res =  projectionMatrix * modelViewPosition;
 
-  float t = time * 0.5;
-  vec3 distortion = curl_noise( vec3(position.x+t, position.y+t,  position.y+t) ) * scroll * 50.0;
-    
-
+  float t = time * 0.05;
+  vec3 distortion = curl_noise( vec3(position.x+t, position.y,  position.y) ) * ease(scroll) *16.;
 
   vec4 finalPosition = res + res * vec4(distortion.x, distortion.y, position.z, 1.0);
   
