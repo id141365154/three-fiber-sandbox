@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/three-fiber-sandbox/static/css/main.15fab91b.css",
-    "main.js": "/three-fiber-sandbox/static/js/main.44c440e8.js",
+    "main.js": "/three-fiber-sandbox/static/js/main.dc5ac1e9.js",
     "static/js/787.d7e7aaf3.chunk.js": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js",
     "static/media/floor-texture.webp": "/three-fiber-sandbox/static/media/floor-texture.c04e1569b50dc6ad6fb5.webp",
     "static/media/1.jpeg": "/three-fiber-sandbox/static/media/1.2e47942671b0108baae8.jpeg",
@@ -17,11 +17,11 @@
     "index.html": "/three-fiber-sandbox/index.html",
     "static/media/runet.svg": "/three-fiber-sandbox/static/media/runet.c74b6ab9141bdb641a8f202e609fd476.svg",
     "main.15fab91b.css.map": "/three-fiber-sandbox/static/css/main.15fab91b.css.map",
-    "main.44c440e8.js.map": "/three-fiber-sandbox/static/js/main.44c440e8.js.map",
+    "main.dc5ac1e9.js.map": "/three-fiber-sandbox/static/js/main.dc5ac1e9.js.map",
     "787.d7e7aaf3.chunk.js.map": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.15fab91b.css",
-    "static/js/main.44c440e8.js"
+    "static/js/main.dc5ac1e9.js"
   ]
 }

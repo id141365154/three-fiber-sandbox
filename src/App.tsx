@@ -6,12 +6,18 @@ import { ShadersScene } from "./scenes/shaders";
 import { SimpleScene } from "./scenes/simple";
 import { useState } from "react";
 
-const scenes = [ParticlesScene, Cards, FlatCards, ShadersScene, SimpleScene];
+const scenes = [
+  { component: ParticlesScene, name: "ParticlesScene" },
+  { component: Cards, name: "Cards" },
+  { component: FlatCards, name: "FlatCards" },
+  { component: ShadersScene, name: "ShadersScene" },
+  { component: SimpleScene, name: "SimpleScene" },
+];
 
 function App() {
   const [currentScene, setCurrentScene] = useState(0);
 
-  const Scene = scenes[currentScene];
+  const Scene = scenes[currentScene].component;
 
   return (
     <div className="content">
