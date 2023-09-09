@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/three-fiber-sandbox/static/css/main.15fab91b.css",
-    "main.js": "/three-fiber-sandbox/static/js/main.dc5ac1e9.js",
+    "main.css": "/three-fiber-sandbox/static/css/main.16c5b68e.css",
+    "main.js": "/three-fiber-sandbox/static/js/main.698b7cb3.js",
     "static/js/787.d7e7aaf3.chunk.js": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js",
-    "static/media/floor-texture.webp": "/three-fiber-sandbox/static/media/floor-texture.c04e1569b50dc6ad6fb5.webp",
-    "static/media/1.jpeg": "/three-fiber-sandbox/static/media/1.2e47942671b0108baae8.jpeg",
-    "static/media/2.jpeg": "/three-fiber-sandbox/static/media/2.6cf429278e1814d4e2ca.jpeg",
-    "static/media/3.jpeg": "/three-fiber-sandbox/static/media/3.f99ad9638c0fc24b16f2.jpeg",
     "static/media/4.jpeg": "/three-fiber-sandbox/static/media/4.062827a447506b446cfd.jpeg",
+    "static/media/2.jpeg": "/three-fiber-sandbox/static/media/2.6cf429278e1814d4e2ca.jpeg",
+    "static/media/1.jpeg": "/three-fiber-sandbox/static/media/1.2e47942671b0108baae8.jpeg",
+    "static/media/3.jpeg": "/three-fiber-sandbox/static/media/3.f99ad9638c0fc24b16f2.jpeg",
+    "static/media/floor-texture.webp": "/three-fiber-sandbox/static/media/floor-texture.c04e1569b50dc6ad6fb5.webp",
     "static/media/png.png": "/three-fiber-sandbox/static/media/png.6acb912565c7f9641319.png",
     "static/media/otkritie.png": "/three-fiber-sandbox/static/media/otkritie.27ba5ec543944b9d47db.png",
     "static/media/domrf.png": "/three-fiber-sandbox/static/media/domrf.49bef6e069a0ed9e7f04.png",
@@ -16,12 +16,12 @@
     "static/media/goldenapp.svg": "/three-fiber-sandbox/static/media/goldenapp.aee4282fc4d04eb2db5c05b4ab45aea0.svg",
     "index.html": "/three-fiber-sandbox/index.html",
     "static/media/runet.svg": "/three-fiber-sandbox/static/media/runet.c74b6ab9141bdb641a8f202e609fd476.svg",
-    "main.15fab91b.css.map": "/three-fiber-sandbox/static/css/main.15fab91b.css.map",
-    "main.dc5ac1e9.js.map": "/three-fiber-sandbox/static/js/main.dc5ac1e9.js.map",
+    "main.16c5b68e.css.map": "/three-fiber-sandbox/static/css/main.16c5b68e.css.map",
+    "main.698b7cb3.js.map": "/three-fiber-sandbox/static/js/main.698b7cb3.js.map",
     "787.d7e7aaf3.chunk.js.map": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.15fab91b.css",
-    "static/js/main.dc5ac1e9.js"
+    "static/css/main.16c5b68e.css",
+    "static/js/main.698b7cb3.js"
   ]
 }
