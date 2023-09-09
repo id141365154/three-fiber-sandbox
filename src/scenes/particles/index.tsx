@@ -1,7 +1,7 @@
 import { extend, Canvas } from "@react-three/fiber";
 import { UnrealBloomPass, EffectComposer } from "three-stdlib";
 import { Stats } from "@react-three/drei";
-import { Slides, TCubeRef } from "./components/cube";
+import { Slides, TCubeRef } from "./components/slides";
 
 import "./styles.css";
 import { PerspectiveCamera } from "@react-three/drei";

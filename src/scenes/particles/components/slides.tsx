@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { forwardRef, useRef } from "react";
-import { ShaderMaterial, TextureLoader, Vector3 } from "three";
+import { ShaderMaterial, TextureLoader, Vector2, Vector3 } from "three";
 
 import img1 from "../images/1.jpeg";
 import img2 from "../images/2.jpeg";
@@ -23,7 +23,7 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
   const texture3 = useLoader(TextureLoader, img3);
   const texture4 = useLoader(TextureLoader, img4);
 
-  const slides = [texture1, texture2, texture3, texture4];
+  const slides = [texture3, texture1, texture2, texture4];
 
   useFrame((state, delta) => {
     // @ts-ignore
@@ -57,6 +57,8 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
     ref.current.uniforms.tex = {
       value: slide,
     };
+
+    ref.current.uniforms.pointerPos.value = state.pointer;
   });
 
   return (
@@ -64,6 +66,17 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
       name="cube2"
       rotation={[0, 0, 0]}
       position={new Vector3(0, 0.0, 0.5)}
+      // onPointerMove={(e) => {
+      //   // eslint-disable-next-line no-console
+      //   //console.log("e.point", e.point);
+      //   if (!ref.current) {
+      //     return;
+      //   }
+      //   // eslint-disable-next-line no-console
+      //   //console.log("e", e.point);
+      //   ////alert("p");
+      //   //ref.current.uniforms.pointerPos.value = e.point;
+      // }}
     >
       <planeGeometry args={[1 * 1.25, 1, 600 * 1.25, 600]} />
 
@@ -72,6 +85,9 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
         vertexShader={vertex}
         fragmentShader={fragment}
         uniforms={{
+          resolution: {
+            value: new Vector2(window.innerWidth, window.innerHeight),
+          },
           time: {
             value: 0,
           },
@@ -80,6 +96,13 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
           },
           tex: {
             value: slides[0],
+          },
+          pointerPos: {
+            value: new Vector3(
+              0.10020708081678344,
+              0.2366080311766521,
+              0.7114697690371564
+            ),
           },
         }}
       />
