@@ -4,9 +4,11 @@ import { Cards } from "./scenes/cards";
 import { FlatCards } from "./scenes/flat-cards";
 import { ShadersScene } from "./scenes/shaders";
 import { SimpleScene } from "./scenes/simple";
+import { Particles2Scene } from "./scenes/particles-2";
 import { useState } from "react";
 
 const scenes = [
+  { component: Particles2Scene, name: "Particles2Scene" },
   { component: ParticlesScene, name: "ParticlesScene" },
   { component: Cards, name: "Cards" },
   { component: FlatCards, name: "FlatCards" },
