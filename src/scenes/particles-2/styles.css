@@ -29,3 +29,10 @@
   height: 100vh;
   width: 100%;
 }
+
+.particles-2 .variants {
+  position: fixed;
+  top: 100px;
+  left: 16px;
+  z-index: 100;
+}

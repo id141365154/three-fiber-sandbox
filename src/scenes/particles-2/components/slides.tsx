@@ -9,19 +9,29 @@ import img4 from "../images/4.jpeg";
 
 import { fragment } from "./fragment";
 import { vertex } from "./vertex";
+import { vertex2 } from "./vertex-2";
 
 let value = 0;
 
 const Pi = 3.141592654;
 
+type Props = {
+  variant: "1" | "2";
+};
+
 export type TCubeRef = { offset: number; max: number };
 
-export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
+export const Slides = forwardRef<TCubeRef, Props>((props, forwarderRef) => {
   const ref = useRef<ShaderMaterial>(null);
   const texture1 = useLoader(TextureLoader, img1);
   const texture2 = useLoader(TextureLoader, img2);
   const texture3 = useLoader(TextureLoader, img3);
   const texture4 = useLoader(TextureLoader, img4);
+
+  const vert = {
+    "1": vertex,
+    "2": vertex2,
+  };
 
   const slides = [texture3, texture1, texture2, texture4];
 
@@ -82,7 +92,7 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
 
       <shaderMaterial
         ref={ref}
-        vertexShader={vertex}
+        vertexShader={vert[props.variant]}
         fragmentShader={fragment}
         uniforms={{
           resolution: {

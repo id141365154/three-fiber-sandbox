@@ -8,7 +8,16 @@ import { Particles2Scene } from "./scenes/particles-2";
 import { useState } from "react";
 
 const scenes = [
-  { component: Particles2Scene, name: "Particles2Scene" },
+  {
+    component: Particles2Scene,
+    name: "Particles2Scene v 1",
+    props: { variant: "1" },
+  },
+  {
+    component: Particles2Scene,
+    name: "Particles2Scene v2",
+    props: { variant: "2" },
+  },
   { component: ParticlesScene, name: "ParticlesScene" },
   { component: Cards, name: "Cards" },
   { component: FlatCards, name: "FlatCards" },
@@ -20,6 +29,7 @@ function App() {
   const [currentScene, setCurrentScene] = useState(0);
 
   const Scene = scenes[currentScene].component;
+  const props = scenes[currentScene].props;
 
   return (
     <div className="content">
@@ -30,7 +40,8 @@ function App() {
           </button>
         ))}
       </div>
-      <Scene />
+      {/*  @ts-ignore  */}
+      <Scene {...props} />
     </div>
   );
 }

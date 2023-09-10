@@ -10,7 +10,11 @@ import { useRef } from "react";
 
 extend({ UnrealBloomPass, EffectComposer });
 
-export const Particles2Scene = () => {
+type Props = {
+  variant: "1" | "2";
+};
+
+export const Particles2Scene = ({ variant }: Props) => {
   const scrollRef = useRef<TCubeRef | null>(null);
 
   return (
@@ -24,7 +28,7 @@ export const Particles2Scene = () => {
           <Stats />
           <color attach="background" args={["#000"]} />
 
-          <Slides ref={scrollRef} />
+          <Slides ref={scrollRef} variant={variant} />
 
           <spotLight
             visible
