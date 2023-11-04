@@ -5,9 +5,14 @@ import { FlatCards } from "./scenes/flat-cards";
 import { ShadersScene } from "./scenes/shaders";
 import { SimpleScene } from "./scenes/simple";
 import { Particles2Scene } from "./scenes/particles-2";
+import { GlbModels } from "./scenes/glb-model";
 import { useState } from "react";
 
 const scenes = [
+  {
+    component: GlbModels,
+    name: "GlbModels",
+  },
   {
     component: Particles2Scene,
     name: "Particles2Scene v 1",
