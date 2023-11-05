@@ -2,7 +2,7 @@ import glsl from 'glslify';
 
 
 
-export const vertex = glsl`
+export const vertexOpacity = glsl`
 #pragma glslify: cnoise = require(glsl-noise/classic/3d)
 
 varying vec2 vUv; 
@@ -20,29 +20,10 @@ void main() {
   float x =  clamp(pointerPos.x/30., 0., 1.);
 
   vUv = uv;
+  vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
 
-  vec3 mixed = mix(position, newPos, x);
-
-  vec4 modelViewPosition = modelViewMatrix * vec4(mixed, 1.0);
-
-  gl_PointSize = 2.0  ;
-
-  float d = distance(position.xy, pointerPos);
-
-  
-
-   
-   
-  float pointer =  1.- smoothstep(0., .1, d); 
-   
   vec4 res =  projectionMatrix * modelViewPosition;
-  float n = cnoise( mixed /2.  ) * 1.   ;
-  res.y = res.y  + res.y * n * x * 1200. ;
-   
-   
-  
+ 
   gl_Position =  res;
-   
-   
    
 }`;
