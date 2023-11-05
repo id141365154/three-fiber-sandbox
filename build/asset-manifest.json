@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/three-fiber-sandbox/static/css/main.16c5b68e.css",
-    "main.js": "/three-fiber-sandbox/static/js/main.698b7cb3.js",
+    "main.css": "/three-fiber-sandbox/static/css/main.60c38bcb.css",
+    "main.js": "/three-fiber-sandbox/static/js/main.833b223f.js",
     "static/js/787.d7e7aaf3.chunk.js": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js",
+    "static/media/shoe.glb": "/three-fiber-sandbox/static/media/shoe.bc1ff12b0ef34e080009.glb",
     "static/media/4.jpeg": "/three-fiber-sandbox/static/media/4.062827a447506b446cfd.jpeg",
+    "static/media/nike.glb": "/three-fiber-sandbox/static/media/nike.f31e9c2ec95a688aecc4.glb",
     "static/media/2.jpeg": "/three-fiber-sandbox/static/media/2.6cf429278e1814d4e2ca.jpeg",
     "static/media/1.jpeg": "/three-fiber-sandbox/static/media/1.2e47942671b0108baae8.jpeg",
     "static/media/3.jpeg": "/three-fiber-sandbox/static/media/3.f99ad9638c0fc24b16f2.jpeg",
@@ -16,12 +18,12 @@
     "static/media/goldenapp.svg": "/three-fiber-sandbox/static/media/goldenapp.aee4282fc4d04eb2db5c05b4ab45aea0.svg",
     "index.html": "/three-fiber-sandbox/index.html",
     "static/media/runet.svg": "/three-fiber-sandbox/static/media/runet.c74b6ab9141bdb641a8f202e609fd476.svg",
-    "main.16c5b68e.css.map": "/three-fiber-sandbox/static/css/main.16c5b68e.css.map",
-    "main.698b7cb3.js.map": "/three-fiber-sandbox/static/js/main.698b7cb3.js.map",
+    "main.60c38bcb.css.map": "/three-fiber-sandbox/static/css/main.60c38bcb.css.map",
+    "main.833b223f.js.map": "/three-fiber-sandbox/static/js/main.833b223f.js.map",
     "787.d7e7aaf3.chunk.js.map": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.16c5b68e.css",
-    "static/js/main.698b7cb3.js"
+    "static/css/main.60c38bcb.css",
+    "static/js/main.833b223f.js"
   ]
 }
