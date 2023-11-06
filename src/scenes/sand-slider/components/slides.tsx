@@ -16,43 +16,60 @@ import { fragment } from "./fragment";
 import { vertex } from "./vertex";
 
 import font from "./font.json";
-import { randFloat } from "three/src/math/MathUtils";
 import { GeometryUtils } from "./utils";
 
 export type TCubeRef = { offset: number; max: number };
 
-// eslint-disable-next-line no-console
-
 let time = 0;
+const particles = 10000;
 
-const text = "I Love you";
 const loader = new FontLoader();
 const myFont = loader.parse(font);
 
-const geometry = new TextGeometry(text, {
+const strings = new Map([
+  ["1", "APPS"],
+  ["2", "WEB"],
+  ["3", "IoT"],
+  ["4", "#1"],
+]);
+
+const s = strings.get("1") || "";
+
+const geometry = new TextGeometry(s, {
   font: myFont,
   size: 10,
   height: 3,
   steps: 20,
   depth: 0.1,
-
   curveSegments: 2,
 });
 
-const particles = 10000;
+strings.forEach((str, i) => {
+  const geo = new TextGeometry(str, {
+    font: myFont,
+    size: 10,
+    height: 3,
+    steps: 20,
+    depth: 0.1,
+    curveSegments: 2,
+  });
 
-const points = GeometryUtils.randomPointsInBufferGeometry(geometry, particles);
+  const points = GeometryUtils.randomPointsInBufferGeometry(geo, particles);
 
-const positions = [];
+  const positions = [];
 
-for (let i = 0; i < points.length; i++) {
-  const p = points[i];
-  positions.push(p.x, p.y, p.z);
-}
+  for (let i = 0; i < points.length; i++) {
+    const p = points[i];
+    positions.push(p.x, p.y, p.z);
+  }
+  const pos = new Float32BufferAttribute(positions, 3);
 
-const pos = new Float32BufferAttribute(positions, 3);
-
-geometry.setAttribute("position", pos);
+  if (i === "1") {
+    geometry.setAttribute("position", pos);
+  } else {
+    geometry.setAttribute(`pos${i}`, pos);
+  }
+});
 
 export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
   const ref = useRef<ShaderMaterial>(null);
@@ -82,18 +99,17 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
     ref.current.uniforms.pointerPos.value = state.pointer;
   });
 
-  geometry.attributes.inPos = geometry.attributes.position.clone();
-  geometry.attributes.outPos = geometry.attributes.position.clone();
+  //  geometry.attributes.inPos = geometry.attributes.position.clone();
 
-  for (let index = 0; index < geometry.attributes.position.count; index++) {
-    const z = geometry.attributes.position.getZ(index);
-    const y = geometry.attributes.position.getY(index);
-    const w = geometry.attributes.position.getW(index);
-    const Xin = randFloat(1, 3) - index * 0.5;
+  // for (let index = 0; index < geometry.attributes.position.count; index++) {
+  //   const z = geometry.attributes.position.getZ(index);
+  //   const y = geometry.attributes.position.getY(index);
+  //   const w = geometry.attributes.position.getW(index);
+  //   const Xin = randFloat(1, 3) - index * 0.5;
 
-    //const Y = randFloat(1, 100) + (index / 100) * Math.sin(index) - index / 40;
-    geometry.attributes.inPos.setXYZW(index, Xin, y, z, w);
-  }
+  //   //const Y = randFloat(1, 100) + (index / 100) * Math.sin(index) - index / 40;
+  //   geometry.attributes.inPos.setXYZW(index, Xin, y, z, w);
+  // }
 
   return (
     <>
