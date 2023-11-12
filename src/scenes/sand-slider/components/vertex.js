@@ -36,13 +36,15 @@ void main() {
   }
   if(x>=2.){
     mixed = mix(pos3, pos4, x - 2.);
- }
+  }
 
  
 
   vec4 modelViewPosition = modelViewMatrix * vec4(mixed, 1.0);
 
-  gl_PointSize = 2.0 ;
+  float pointSize = 3. * clamp(cos(scroll*2.*pi), .5, 1.);
+
+  gl_PointSize = pointSize ;
 
  
   vec4 res =  projectionMatrix * modelViewPosition;

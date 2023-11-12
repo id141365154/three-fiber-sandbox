@@ -8,9 +8,10 @@ import {
 
 import { useFrame } from "@react-three/fiber";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-
-// eslint-disable-next-line no-console
+import {
+  TextGeometry,
+  TextGeometryParameters,
+} from "three/examples/jsm/geometries/TextGeometry";
 
 import { fragment } from "./fragment";
 import { vertex } from "./vertex";
@@ -21,38 +22,35 @@ import { GeometryUtils } from "./utils";
 export type TCubeRef = { offset: number; max: number };
 
 let time = 0;
-const particles = 10000;
+const particles = 5000;
 
 const loader = new FontLoader();
 const myFont = loader.parse(font);
 
 const strings = new Map([
-  ["1", "APPS"],
-  ["2", "WEB"],
-  ["3", "IoT"],
-  ["4", "#1"],
+  ["1", "React"],
+  ["2", "Three"],
+  ["3", "Fiber"],
+  ["4", "Awesome"],
 ]);
 
 const s = strings.get("1") || "";
 
-const geometry = new TextGeometry(s, {
+const textParams: TextGeometryParameters = {
   font: myFont,
   size: 10,
   height: 3,
-  steps: 20,
+  steps: 10,
   depth: 0.1,
   curveSegments: 2,
-});
+};
+
+const geometry = new TextGeometry(s, textParams);
 
 strings.forEach((str, i) => {
-  const geo = new TextGeometry(str, {
-    font: myFont,
-    size: 10,
-    height: 3,
-    steps: 20,
-    depth: 0.1,
-    curveSegments: 2,
-  });
+  const geo = new TextGeometry(str, textParams);
+
+  geo.center();
 
   const points = GeometryUtils.randomPointsInBufferGeometry(geo, particles);
 
@@ -99,25 +97,9 @@ export const Slides = forwardRef<TCubeRef>((props, forwarderRef) => {
     ref.current.uniforms.pointerPos.value = state.pointer;
   });
 
-  //  geometry.attributes.inPos = geometry.attributes.position.clone();
-
-  // for (let index = 0; index < geometry.attributes.position.count; index++) {
-  //   const z = geometry.attributes.position.getZ(index);
-  //   const y = geometry.attributes.position.getY(index);
-  //   const w = geometry.attributes.position.getW(index);
-  //   const Xin = randFloat(1, 3) - index * 0.5;
-
-  //   //const Y = randFloat(1, 100) + (index / 100) * Math.sin(index) - index / 40;
-  //   geometry.attributes.inPos.setXYZW(index, Xin, y, z, w);
-  // }
-
   return (
     <>
-      <group
-        position={[0, 0, 1.5]}
-        scale={[0.1, 0.1, 0.1]}
-        rotation={[0, 1, 0]}
-      >
+      <group position={[0, 0, 0]} scale={[0.1, 0.1, 0.1]} rotation={[0, 1, 0]}>
         <points geometry={geometry}>
           <shaderMaterial
             transparent
