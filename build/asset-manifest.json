@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/three-fiber-sandbox/static/css/main.60c38bcb.css",
-    "main.js": "/three-fiber-sandbox/static/js/main.22e219bc.js",
+    "main.js": "/three-fiber-sandbox/static/js/main.c1b57910.js",
     "static/js/787.d7e7aaf3.chunk.js": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js",
     "static/media/shoe.glb": "/three-fiber-sandbox/static/media/shoe.bc1ff12b0ef34e080009.glb",
     "static/media/4.jpeg": "/three-fiber-sandbox/static/media/4.062827a447506b446cfd.jpeg",
@@ -19,11 +19,11 @@
     "index.html": "/three-fiber-sandbox/index.html",
     "static/media/runet.svg": "/three-fiber-sandbox/static/media/runet.c74b6ab9141bdb641a8f202e609fd476.svg",
     "main.60c38bcb.css.map": "/three-fiber-sandbox/static/css/main.60c38bcb.css.map",
-    "main.22e219bc.js.map": "/three-fiber-sandbox/static/js/main.22e219bc.js.map",
+    "main.c1b57910.js.map": "/three-fiber-sandbox/static/js/main.c1b57910.js.map",
     "787.d7e7aaf3.chunk.js.map": "/three-fiber-sandbox/static/js/787.d7e7aaf3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60c38bcb.css",
-    "static/js/main.22e219bc.js"
+    "static/js/main.c1b57910.js"
   ]
 }

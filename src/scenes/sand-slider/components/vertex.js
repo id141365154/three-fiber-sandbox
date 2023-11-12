@@ -29,7 +29,7 @@ void main() {
   vec3 mixed = mix(position, pos2, x);
 
 
-  float period = sin(x*pi);
+  float period = abs(sin(x*pi));
   
   if(x>=1.){
      mixed = mix(pos2, pos3, x - 1.);
@@ -42,18 +42,19 @@ void main() {
 
   vec4 modelViewPosition = modelViewMatrix * vec4(mixed, 1.0);
 
-  float pointSize = 3. * clamp(cos(scroll*2.*pi), .5, 1.);
+   
 
-  gl_PointSize = pointSize ;
+  gl_PointSize = 1.5 ;
 
  
   vec4 res =  projectionMatrix * modelViewPosition;
-  float n = cnoise( mixed /3. - time/10. ) * .6    ;
+  float n = cnoise(  mixed /3. - time/3. ) * 1.3   ;
  
 
-  float noiseIndex = clamp((x - 1.) *300., -1., 2.5 );
+   
 
-  res.y = res.y  + res.y * n * period  ;
+  res.y = res.y  + res.y * n * period;
+
    
    
    

@@ -22,7 +22,7 @@ export const Effects = forwardRef<TCubeRef>((_, forwarderRef) => {
 
     const period = Math.sin(offset * Math.PI);
     // @ts-ignore
-    bloomRef.current.intensity = Math.abs(period / 3);
+    bloomRef.current.intensity = Math.abs(period * 2);
   });
 
   return (
