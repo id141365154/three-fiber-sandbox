@@ -7,9 +7,14 @@ import { SimpleScene } from "./scenes/simple";
 import { Particles2Scene } from "./scenes/particles-2";
 import { GlbModels } from "./scenes/glb-model";
 import { SandSlider } from "./scenes/sand-slider";
+import { SandLayers } from "./scenes/sand-layers";
 import { useState } from "react";
 
 const scenes = [
+  {
+    component: SandLayers,
+    name: "SandLayers",
+  },
   {
     component: SandSlider,
     name: "SandSlider",
