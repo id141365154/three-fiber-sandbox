@@ -20,3 +20,7 @@ code {
   width: 200px;
   z-index: 99;
 }
+
+.header a {
+  display: block;
+}
