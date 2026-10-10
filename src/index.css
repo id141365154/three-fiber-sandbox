@@ -15,12 +15,130 @@ code {
 
 .header {
   position: fixed;
-  right: 0;
-  top: 0;
+  right: 16px;
+  top: 16px;
   width: 200px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 8px;
   z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(16, 16, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.header-title {
+  padding: 6px 10px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .header a {
   display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.header a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.header a:focus-visible {
+  outline: 2px solid #7aa7ff;
+  outline-offset: -2px;
+}
+
+.header a.active {
+  background: #fff;
+  color: #111;
+}
+
+.header-name {
+  display: block;
+  font-weight: 600;
+}
+
+.header-description {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.35;
+  opacity: 0.6;
+}
+
+.scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px 10px 14px;
+  border-radius: 999px;
+  background: rgba(16, 16, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.scroll-hint-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-hint-mouse {
+  position: relative;
+  width: 16px;
+  height: 26px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 9px;
+}
+
+.scroll-hint-mouse::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 2px;
+  height: 5px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.85);
+  animation: scroll-hint-wheel 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-hint-wheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
 }

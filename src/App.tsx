@@ -1,60 +1,123 @@
 import "./App.css";
+import { Leva } from "leva";
 import { ParticlesScene } from "./scenes/particles";
 import { Cards } from "./scenes/cards";
-import { FlatCards } from "./scenes/flat-cards";
 import { ShadersScene } from "./scenes/shaders";
 import { SimpleScene } from "./scenes/simple";
 import { Particles2Scene } from "./scenes/particles-2";
-import { GlbModels } from "./scenes/glb-model";
 import { SandSlider } from "./scenes/sand-slider";
-import { SandLayers } from "./scenes/sand-layers";
 import { SandImageSlider } from "./scenes/sand-image-slider";
-import { MouseEvent, useEffect, useState } from "react";
+import {
+  ComponentType,
+  MouseEvent,
+  useEffect,
+  useState,
+  WheelEvent,
+} from "react";
 
-const scenes = [
+type TScene = {
+  component: ComponentType<any>;
+  name: string;
+  description: string;
+  slug: string;
+  // the scene reacts to the scroll, so the hint is shown
+  scroll?: boolean;
+  props?: Record<string, unknown>;
+};
+
+const scenes: TScene[] = [
   {
-    component: SandLayers,
-    name: "SandLayers",
-    slug: "sand-layers",
+    component: SandImageSlider,
+    name: "Sand Photos",
+    description: "Photos crumble into sand and reassemble into the next one.",
+    slug: "sand-image-slider",
+    scroll: true,
   },
   {
     component: SandSlider,
-    name: "SandSlider",
+    name: "Sand Words",
+    description: "Words made of sand particles morph into each other.",
     slug: "sand-slider",
+    scroll: true,
   },
   {
-    component: SandImageSlider,
-    name: "SandImageSlider",
-    slug: "sand-image-slider",
-  },
-  {
-    component: GlbModels,
-    name: "GlbModels",
-    slug: "glb-models",
+    component: ParticlesScene,
+    name: "Photo Particles",
+    description: "Photos built from particles dissolve into one another.",
+    slug: "particles",
+    scroll: true,
   },
   {
     component: Particles2Scene,
-    name: "Particles2Scene v 1",
+    name: "Photo Particles A",
+    description: "Second take on the photo particles, effect A.",
     slug: "particles-2-v1",
+    scroll: true,
     props: { variant: "1" },
   },
   {
     component: Particles2Scene,
-    name: "Particles2Scene v2",
+    name: "Photo Particles B",
+    description: "Second take on the photo particles, effect B.",
     slug: "particles-2-v2",
+    scroll: true,
     props: { variant: "2" },
   },
-  { component: ParticlesScene, name: "ParticlesScene", slug: "particles" },
-  { component: Cards, name: "Cards", slug: "cards" },
-  { component: FlatCards, name: "FlatCards", slug: "flat-cards" },
-  { component: ShadersScene, name: "ShadersScene", slug: "shaders" },
-  { component: SimpleScene, name: "SimpleScene", slug: "simple" },
+  {
+    component: Cards,
+    name: "Card Corridor",
+    description: "The camera flies along a row of cards.",
+    slug: "cards",
+    scroll: true,
+  },
+  {
+    component: ShadersScene,
+    name: "Wave Shader",
+    description: "A custom shader ripples a surface. Drag to orbit.",
+    slug: "shaders",
+  },
+  {
+    component: SimpleScene,
+    name: "Hover Card",
+    description: "A single card that reacts to the pointer.",
+    slug: "simple",
+  },
 ];
 
 const getSceneIndex = () => {
   const slug = new URLSearchParams(window.location.search).get("scene");
   const index = scenes.findIndex((scene) => scene.slug === slug);
   return index === -1 ? 0 : index;
+};
+
+// The hint has its own state: a scroll must not re-render the scene, some of
+// them keep their shader uniforms in JSX and lose them on a re-render.
+// It goes away at the first scroll; a new scene gets a new hint (by key).
+const ScrollHint = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(true);
+    // scroll events do not bubble, so listen in the capture phase
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("wheel", onScroll, { passive: true });
+    window.addEventListener("touchmove", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("wheel", onScroll);
+      window.removeEventListener("touchmove", onScroll);
+    };
+  }, []);
+
+  return (
+    <div
+      className={scrolled ? "scroll-hint scroll-hint-hidden" : "scroll-hint"}
+      aria-hidden={scrolled}
+    >
+      <span className="scroll-hint-mouse" />
+      Scroll to explore
+    </div>
+  );
 };
 
 function App() {
@@ -75,24 +138,39 @@ function App() {
     setCurrentScene(i);
   };
 
-  const Scene = scenes[currentScene].component;
-  const props = scenes[currentScene].props;
+  // the menu lies over the scroll area of a scene: pass the wheel through to it
+  // (unless the menu itself has something to scroll)
+  const passWheel = (e: WheelEvent<HTMLElement>) => {
+    const menu = e.currentTarget;
+    if (menu.scrollHeight > menu.clientHeight) {
+      return;
+    }
+    document.querySelector(".scrollable")?.scrollBy({ top: e.deltaY });
+  };
+
+  const { component: Scene, props, scroll } = scenes[currentScene];
 
   return (
     <div className="content">
-      <div className="header">
+      <nav className="header" aria-label="Scenes" onWheel={passWheel}>
+        <div className="header-title">Scenes</div>
         {scenes.map((scene, i) => (
           <a
             key={scene.slug}
+            className={i === currentScene ? "active" : undefined}
+            aria-current={i === currentScene ? "page" : undefined}
             href={`?scene=${scene.slug}`}
             onClick={(e) => navigate(e, i)}
           >
-            {scene.name}
+            <span className="header-name">{scene.name}</span>
+            <span className="header-description">{scene.description}</span>
           </a>
         ))}
-      </div>
-      {/*  @ts-ignore  */}
+      </nav>
+      {/* the settings panel of a scene, moved left of the menu */}
+      <Leva collapsed titleBar={{ position: { x: -250, y: 0 } }} />
       <Scene {...props} />
+      {scroll && <ScrollHint key={scenes[currentScene].slug} />}
     </div>
   );
 }

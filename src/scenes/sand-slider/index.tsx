@@ -17,7 +17,7 @@ export const Scene = forwardRef<TCubeRef>((_, scrollRef) => {
       <Stats />
       <color attach="background" args={["#000"]} />
 
-      <Bounds fit clip observe margin={2.5}>
+      <Bounds fit clip observe margin={1.5}>
         <Slides ref={scrollRef} />
       </Bounds>
 
