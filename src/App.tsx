@@ -7,6 +7,7 @@ import { SimpleScene } from "./scenes/simple";
 import { Particles2Scene } from "./scenes/particles-2";
 import { SandSlider } from "./scenes/sand-slider";
 import { SandImageSlider } from "./scenes/sand-image-slider";
+import { DropsScene } from "./scenes/drops";
 import {
   ComponentType,
   MouseEvent,
@@ -82,6 +83,12 @@ const scenes: TScene[] = [
     description: "A single card that reacts to the pointer.",
     slug: "simple",
   },
+  {
+    component: DropsScene,
+    name: "Drops",
+    description: "Click to drop: ripples reveal the next photo.",
+    slug: "drops",
+  },
 ];
 
 const getSceneIndex = () => {
@@ -120,8 +127,29 @@ const ScrollHint = () => {
   );
 };
 
+const menuStorageKey = "menu-collapsed";
+
+const getMenuCollapsed = () => {
+  try {
+    return window.localStorage.getItem(menuStorageKey) === "1";
+  } catch {
+    return false;
+  }
+};
+
 function App() {
   const [currentScene, setCurrentScene] = useState(getSceneIndex);
+  const [collapsed, setCollapsed] = useState(getMenuCollapsed);
+
+  const toggleMenu = () => {
+    const next = !collapsed;
+    setCollapsed(next);
+    try {
+      window.localStorage.setItem(menuStorageKey, next ? "1" : "0");
+    } catch {
+      // the state is just not remembered
+    }
+  };
 
   useEffect(() => {
     const onPopState = () => setCurrentScene(getSceneIndex());
@@ -152,20 +180,33 @@ function App() {
 
   return (
     <div className="content">
-      <nav className="header" aria-label="Scenes" onWheel={passWheel}>
-        <div className="header-title">Scenes</div>
-        {scenes.map((scene, i) => (
-          <a
-            key={scene.slug}
-            className={i === currentScene ? "active" : undefined}
-            aria-current={i === currentScene ? "page" : undefined}
-            href={`?scene=${scene.slug}`}
-            onClick={(e) => navigate(e, i)}
-          >
-            <span className="header-name">{scene.name}</span>
-            <span className="header-description">{scene.description}</span>
-          </a>
-        ))}
+      <nav
+        className={collapsed ? "header header-collapsed" : "header"}
+        aria-label="Scenes"
+        onWheel={passWheel}
+      >
+        <button
+          type="button"
+          className="header-title"
+          aria-expanded={!collapsed}
+          onClick={toggleMenu}
+        >
+          Scenes
+          <span className="header-chevron" aria-hidden />
+        </button>
+        {!collapsed &&
+          scenes.map((scene, i) => (
+            <a
+              key={scene.slug}
+              className={i === currentScene ? "active" : undefined}
+              aria-current={i === currentScene ? "page" : undefined}
+              href={`?scene=${scene.slug}`}
+              onClick={(e) => navigate(e, i)}
+            >
+              <span className="header-name">{scene.name}</span>
+              <span className="header-description">{scene.description}</span>
+            </a>
+          ))}
       </nav>
       {/* the settings panel of a scene, moved left of the menu */}
       <Leva collapsed titleBar={{ position: { x: -250, y: 0 } }} />
